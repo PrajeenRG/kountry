@@ -1,0 +1,23 @@
+.card {
+    @apply p-2;
+    @apply bg-gray-800;
+    @apply rounded-md;
+}
+
+.flag {
+    @apply rounded-md;
+    width: 100%;
+    aspect-ratio: 7/5;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+}
+
+.title {
+    @apply font-bold;
+    @apply mt-2;
+}
+
+.subtext {
+    @apply mt-0.5;
+}

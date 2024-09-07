@@ -1,8 +1,10 @@
 import { PropsWithChildren } from "react";
 
+import styles from "./CountriesView.module.css";
+
 export default function CountriesView({ children }: PropsWithChildren) {
     return (
-        <div className="grid grid-cols-5 grid-flow-row gap-2 p-2">
+        <div className={styles.container}>
             {children}
         </div>
     )
