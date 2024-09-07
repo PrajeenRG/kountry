@@ -18,9 +18,9 @@ const shimmer = (w: number, h: number) => `
 
 const toBase64 = (str: string) => Buffer.from(str).toString("base64");
 
-export default function CountryCard({ name, capitals, flag }: {
+export default function CountryCard({ name, subregion, flag }: {
     name: string,
-    capitals?: string,
+    subregion: string,
     flag: string
 }) {
     return (
@@ -31,7 +31,7 @@ export default function CountryCard({ name, capitals, flag }: {
                 height={200}
                 placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(300, 200))}`} />
             <h3 className={styles.title}>{name}</h3>
-            {capitals && <p className={styles.subtext}>{capitals}</p>}
+            <p className={styles.subtext}>{subregion}</p>
         </div>
     );
 }
