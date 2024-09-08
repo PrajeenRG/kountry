@@ -1,11 +1,14 @@
 .card {
     @apply p-2;
-    @apply bg-gray-800;
+    @apply bg-slate-50 dark:bg-slate-800;
+    @apply shadow-sm;
+    @apply shadow-gray-950;
     @apply rounded-md;
 }
 
 .flag {
-    @apply rounded-md;
+    @apply bg-slate-50 dark:bg-slate-950;
+    @apply rounded-sm;
     width: 100%;
     aspect-ratio: 7/5;
     overflow: hidden;
@@ -15,7 +18,8 @@
 
 .title {
     @apply font-bold;
-    @apply mt-2;
+    @apply text-xl;
+    @apply mt-1;
 }
 
 .subtext {
