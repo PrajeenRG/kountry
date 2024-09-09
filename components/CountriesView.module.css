@@ -2,6 +2,6 @@
     @apply p-4;
     @apply grid;
     @apply gap-4;
-    @apply grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8;
+    @apply grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8;
     grid-auto-rows: 1fr;
 }
