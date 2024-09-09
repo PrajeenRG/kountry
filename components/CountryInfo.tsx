@@ -47,14 +47,14 @@ export default async function CountryInfo({ cca3 }: { cca3: string }) {
             <div className={styles.detailBox}>
                 <Detail name="Region" content={countryInfo.region} />
                 <Detail name="Sub Region" content={countryInfo.subregion} />
-                <Detail name="Capital" content={countryInfo.capital.join(", ")} />
+                {countryInfo.capital && <Detail name="Capital" content={countryInfo.capital.join(", ")} />}
                 <Detail name="Location" content={countryInfo.latlng.map(n => n.toFixed(3)).join(", ")} />
                 <Detail name="Area (sq. km)" content={`${countryInfo.area}`} />
                 <Detail name="Population" content={`${countryInfo.population}`} />
                 <Detail name="Start of Week" content={countryInfo.startOfWeek.replace(/^\w/, (c) => c.toUpperCase())} />
-                <Detail name="TLD" content={countryInfo.tld.join(" ")} />
+                {countryInfo.tld && <Detail name="TLD" content={countryInfo.tld.join(" ")} />}
                 <Detail name="Timezones" content={countryInfo.timezones.join(" ")} />
-                <Detail name="Borders" content={countryInfo.borders.join(", ")} />
+                {countryInfo.borders && <Detail name="Borders" content={countryInfo.borders.join(", ")} />}
             </div>
         </div>
     );

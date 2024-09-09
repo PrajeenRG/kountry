@@ -4,14 +4,14 @@
     justify-content: space-evenly;
     place-items: center;
     place-content: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .header {
     display: flex;
     flex-direction: column;
     place-items: center;
-    justify-content: space-around
+    justify-content: space-evenly;
 }
 
 .title {
@@ -27,13 +27,12 @@
 }
 
 .flag {
-    @apply bg-slate-50 dark:bg-slate-950;
-    @apply rounded-sm;
     width: 80%;
     max-width: 300px;
+    padding: 1rem;
     aspect-ratio: 7/5;
     overflow: hidden;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
 }
 
@@ -42,7 +41,8 @@
     @apply grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5;
     gap: 2rem;
     justify-content: center;
-    max-width: 80%;
+    min-width: 70%;
+    max-width: 90%;
 }
 
 .detail {

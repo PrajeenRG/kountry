@@ -16,7 +16,7 @@ export const Modal = ({ children }: { children: ReactNode }) => {
         <div className={styles.overlay}>
             <div className={styles.container}>
                 {children}
-                <button className={styles.closeBtn} onClick={() => setClose(true)}><CloseIcon className="fill-gray-600 dark:fill-gray-300" size={24} /></button>
+                <button className={styles.closeBtn} aria-label="close" title="close" onClick={() => setClose(true)}><CloseIcon className="fill-gray-600 dark:fill-gray-300" size={16} /></button>
             </div>
         </div>
     );

@@ -21,12 +21,14 @@
 }
 
 .closeBtn {
+    display: grid;
+    place-items: center;
     position: absolute;
-    width: 2rem;
     aspect-ratio: 1;
     top: 1rem;
     right: 1rem;
     @apply p-2;
+    @apply w-10 md:w-8;
     @apply bg-gray-400 dark:bg-gray-900;
     @apply rounded-full;
 }
