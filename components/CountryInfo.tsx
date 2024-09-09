@@ -1,0 +1,61 @@
+import Image from "next/image";
+
+import styles from "./CountryInfo.module.css";
+import Shimmer from "@/icons/Shimmer";
+
+type Country = {
+    name: {
+        official: string,
+        common: string
+    },
+    tld: string[],
+    capital: string[]
+    region: string,
+    subregion: string,
+    latlng: number[],
+    area: number,
+    population: number,
+    timezones: string[],
+    startOfWeek: string,
+    borders: string[],
+    flags: {
+        svg: string
+    }
+}
+
+const Detail = ({ name, content }: { name: string, content: string }) => (<div className={styles.detail}>
+    <strong>{name}</strong>
+    <p>{content}</p>
+</div>);
+
+export default async function CountryInfo({ cca3 }: { cca3: string }) {
+    const res = await fetch(`https://restcountries.com/v3.1/alpha/${cca3}`);
+    const countryInfo = (await res.json())[0] as Country;
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <h1 className={styles.title}>{countryInfo.name.official}</h1>
+                <h3 className={styles.altTitle}>{countryInfo.name.common}</h3>
+            </div>
+            <Image className={styles.flag}
+                src={countryInfo.flags.svg}
+                alt={`${countryInfo.name.common}'s flag`}
+                width={300}
+                height={200}
+                placeholder={`data:image/svg+xml;base64,${Shimmer({ width: 300, height: 200 })}`} />
+            <div className={styles.detailBox}>
+                <Detail name="Region" content={countryInfo.region} />
+                <Detail name="Sub Region" content={countryInfo.subregion} />
+                <Detail name="Capital" content={countryInfo.capital.join(", ")} />
+                <Detail name="Location" content={countryInfo.latlng.map(n => n.toFixed(3)).join(", ")} />
+                <Detail name="Area (sq. km)" content={`${countryInfo.area}`} />
+                <Detail name="Population" content={`${countryInfo.population}`} />
+                <Detail name="Start of Week" content={countryInfo.startOfWeek.replace(/^\w/, (c) => c.toUpperCase())} />
+                <Detail name="TLD" content={countryInfo.tld.join(" ")} />
+                <Detail name="Timezones" content={countryInfo.timezones.join(" ")} />
+                <Detail name="Borders" content={countryInfo.borders.join(", ")} />
+            </div>
+        </div>
+    );
+}

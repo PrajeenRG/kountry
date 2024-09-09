@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <CountriesView>
       {countries.map(country => <CountryCard
-        key={country.cca3}
+        key={`${country.cca3}-${country.region}`}
         name={country.name}
         region={country.region}
         flag={country.flag} />)}
