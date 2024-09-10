@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kountry - The navigator of the world
 
-## Getting Started
+A UI wrapper for API provided by [restcountries.com](https://restcountries.com). Using the UI and NextJS, the website has been built to have the following features:
 
-First, run the development server:
+- Top Level view of each country detil
+- A search based filtering system
+- Modal to reveal more information about a country
+- Adaptive light and dark mode as per user device
+- Responsive UI which flows fluidly across different screens
 
+**Demo Link:** [kountry.7725336.xyz](https://kountry.7725336.xyz)
+
+## Tools & Frameworks
+
+- NextJS 14
+- TailwindCSS
+- Vercel
+
+## Get Started
+
+Install the dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd kountry
+pnpm install # preferred, but can use others like npm and yarn
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To run in developer mode:
+```bash
+pnpm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To start a production like local server:
+```bash
+pnpm run build && pnpm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+In both the cases, navigate to `http://localhost:3000` to view the site locally.
 
-## Learn More
+## Enhancements
 
-To learn more about Next.js, take a look at the following resources:
+- Make it more a11y compatible right from fonts to coloring to sizing
+- Add smoother transition on UI updates
+- Refactor to render more components on server
+- Add pagination to card view
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Currently the project is licensed under [MPL-2.0](/LICENSE).
