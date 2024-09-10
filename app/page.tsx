@@ -25,16 +25,16 @@ export default async function Home({ searchParams }: { searchParams: { [key: str
   let countries = (await res.json()) as Country[];;
   countries.sort((a, b) => a.name.common.localeCompare(b.name.common))
 
-  if (searchParams.search) {
+  if (searchParams.q) {
     countries = countries.filter(country => {
-      const searchString = searchParams.search.toLowerCase();
+      const searchString = searchParams.q.toLowerCase();
       const name = country.name.common.toLowerCase();
       return name.includes(searchString);
     });
   }
 
   return (
-    <div>
+    <>
       <NavBar>
         <Link className="flex gap-4 place-items-center" href={"/"}>
           <Image src={icon} alt="Kountry Logo" width={36} height={36} />
@@ -43,16 +43,20 @@ export default async function Home({ searchParams }: { searchParams: { [key: str
         <Search />
       </NavBar>
       <CountriesView className="mt-28 md:mt-16">
-        {countries.map(country => (
-          < CountryCard
-            key={country.cca3}
-            name={country.name.common}
-            region={country.region}
-            flag={country.flags.svg}>
-            <CountryInfo cca3={country.cca3} />
-          </CountryCard>)
-        )}
+        {countries.length === 0 ? "No results found" :
+          countries.map(country => (
+            < CountryCard
+              key={country.cca3}
+              name={country.name.common}
+              region={country.region}
+              flag={country.flags.svg}>
+              <CountryInfo cca3={country.cca3} />
+            </CountryCard>)
+          )}
       </CountriesView>
-    </div >
+      <footer className="flex justify-center pb-6 text-opacity-70 text-gray-400">
+        <p>Powered by <a className="underline" href="https://restcountries.com" target="_blank">restcountries.com</a></p>
+      </footer>
+    </>
   );
 }

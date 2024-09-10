@@ -29,9 +29,9 @@ export default function Search() {
     const handleSearch = (text: string) => {
         const params = new URLSearchParams(searchParams);
         if (text) {
-            params.set("search", text);
+            params.set("q", text);
         } else {
-            params.delete("search");
+            params.delete("q");
         }
 
         replace(`${pathname}?${params.toString()}`);
