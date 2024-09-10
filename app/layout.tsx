@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Jost } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 
-const jost = Jost({
+const poppins = Poppins({
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-jost"
-});
+  variable: "--font-poppins"
+})
 
 export const metadata: Metadata = {
   title: "Kountry | The navigator of the world",
@@ -23,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${jost.className} antialiased`}
+        className={`${poppins.className} antialiased`}
       >
         {children}
         <Analytics />

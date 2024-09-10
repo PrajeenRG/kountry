@@ -43,17 +43,17 @@ export default async function CountryInfo({ cca3 }: { cca3: string }) {
                 alt={`${countryInfo.name.common}'s flag`}
                 width={300}
                 height={200}
-                placeholder={`data:image/svg+xml;base64,${Shimmer({ width: 300, height: 200 })}`} />
+                placeholder={`data:image/svg+xml;base64,${Shimmer({ w: 300, h: 200 })}`} />
             <div className={styles.detailBox}>
                 <Detail name="Region" content={countryInfo.region} />
                 <Detail name="Sub Region" content={countryInfo.subregion} />
                 {countryInfo.capital && <Detail name="Capital" content={countryInfo.capital.join(", ")} />}
                 <Detail name="Location" content={countryInfo.latlng.map(n => n.toFixed(3)).join(", ")} />
-                <Detail name="Area (sq. km)" content={`${countryInfo.area}`} />
-                <Detail name="Population" content={`${countryInfo.population}`} />
+                <Detail name="Area (sq. km)" content={`${countryInfo.area.toLocaleString()}`} />
+                <Detail name="Population" content={`${countryInfo.population.toLocaleString()}`} />
                 <Detail name="Start of Week" content={countryInfo.startOfWeek.replace(/^\w/, (c) => c.toUpperCase())} />
                 {countryInfo.tld && <Detail name="TLD" content={countryInfo.tld.join(" ")} />}
-                <Detail name="Timezones" content={countryInfo.timezones.join(" ")} />
+                <Detail name="Timezones" content={countryInfo.timezones.join(", ")} />
                 {countryInfo.borders && <Detail name="Borders" content={countryInfo.borders.join(", ")} />}
             </div>
         </div>

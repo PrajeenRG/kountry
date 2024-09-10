@@ -14,8 +14,8 @@ export default function CountryCard({ name, region, flag }: {
         src={flag} alt={`${name}'s flag`}
         width={300}
         height={200}
-        placeholder={`data:image/svg+xml;base64,${Shimmer({ width: 300, height: 200 })}`} />
-      <h3 className={styles.title}>{name}</h3>
+        placeholder={`data:image/svg+xml;base64,${Shimmer({ w: 300, h: 200 })}`} />
+      <h2 className={styles.title}>{name}</h2>
       <p className={styles.subtext}>{region}</p>
     </div>
   );

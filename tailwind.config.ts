@@ -22,7 +22,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        sans: ['var(--font-jost)']
+        sans: ['var(--font-poppins)']
       }
     },
   },

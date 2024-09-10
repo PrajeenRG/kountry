@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import icon from "./icon1.svg";
-import { cache } from "react";
 
 type Country = {
   cca3: string,
@@ -20,13 +19,9 @@ type Country = {
   }
 }
 
-const getCountriesData = cache(async () => {
-  const res = await fetch("https://restcountries.com/v3.1/all?fields=name,region,flags,cca3");
-  return (await res.json()) as Country[];
-});
-
 export default async function Home({ searchParams }: { searchParams: { [key: string]: string } }) {
-  let countries = await getCountriesData();
+  const res = await fetch("https://restcountries.com/v3.1/all?fields=name,region,flags,cca3");
+  let countries = (await res.json()) as Country[];;
   countries.sort((a, b) => a.name.common.localeCompare(b.name.common))
 
   if (searchParams.search) {
@@ -48,7 +43,7 @@ export default async function Home({ searchParams }: { searchParams: { [key: str
       </NavBar>
       <CountriesView className="mt-28 md:mt-16">
         {countries.map(country => <CountryCard
-          key={`${country.cca3}-${country.region}`}
+          key={country.cca3}
           name={country.name.common}
           region={country.region}
           flag={country.flags.svg} />)}

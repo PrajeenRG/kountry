@@ -28,9 +28,8 @@
 
 .flag {
     width: 80%;
-    max-width: 300px;
+    max-height: 12rem;
     padding: 1rem;
-    aspect-ratio: 7/5;
     overflow: hidden;
     object-fit: contain;
     object-position: center;
