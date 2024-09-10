@@ -1,5 +1,6 @@
 import CountriesView from "@/components/CountriesView";
 import CountryCard from "@/components/CountryCard";
+import CountryInfo from "@/components/CountryInfo";
 import NavBar from "@/components/NavBar";
 import Search from "@/components/Search";
 import Image from "next/image";
@@ -42,12 +43,16 @@ export default async function Home({ searchParams }: { searchParams: { [key: str
         <Search />
       </NavBar>
       <CountriesView className="mt-28 md:mt-16">
-        {countries.map(country => <CountryCard
-          key={country.cca3}
-          name={country.name.common}
-          region={country.region}
-          flag={country.flags.svg} />)}
+        {countries.map(country => (
+          < CountryCard
+            key={country.cca3}
+            name={country.name.common}
+            region={country.region}
+            flag={country.flags.svg}>
+            <CountryInfo cca3={country.cca3} />
+          </CountryCard>)
+        )}
       </CountriesView>
-    </div>
+    </div >
   );
 }

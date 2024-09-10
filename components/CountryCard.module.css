@@ -34,3 +34,16 @@
 .subtext {
     @apply mt-0.5;
 }
+
+.closeBtn {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    @apply top-4 md:top-[calc(6%_+_1rem)];
+    @apply right-4 md:right-[calc(6%_+_1rem)];
+    @apply p-2;
+    @apply w-10 md:w-8;
+    @apply bg-gray-400 dark:bg-gray-900;
+    @apply rounded-full;
+}
