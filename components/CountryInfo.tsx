@@ -35,8 +35,8 @@ export default async function CountryInfo({ cca3 }: { cca3: string }) {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <h1 className={styles.title}>{countryInfo.name.official}</h1>
-                <h3 className={styles.altTitle}>{countryInfo.name.common}</h3>
+                <h1 className={styles.title}>{countryInfo.name.common}</h1>
+                <h3 className={styles.altTitle}>{countryInfo.name.official}</h3>
             </div>
             <Image className={styles.flag}
                 src={countryInfo.flags.svg}

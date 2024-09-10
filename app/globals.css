@@ -7,6 +7,10 @@
   @apply text-black dark:text-white;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

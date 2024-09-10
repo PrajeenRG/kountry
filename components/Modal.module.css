@@ -11,7 +11,6 @@
 }
 
 .container {
-    position: absolute;
     @apply w-full md:w-[calc(100vw_-_12%)];
     @apply h-full md:h-[calc(100vh_-_12%)];
     @apply p-10;
@@ -23,10 +22,9 @@
 .closeBtn {
     display: grid;
     place-items: center;
-    position: absolute;
     aspect-ratio: 1;
-    top: 1rem;
-    right: 1rem;
+    @apply top-4 md:top-[calc(12vh_-_1rem)];
+    @apply right-4 md:right-[calc(12vw_-_1rem)];
     @apply p-2;
     @apply w-10 md:w-8;
     @apply bg-gray-400 dark:bg-gray-900;

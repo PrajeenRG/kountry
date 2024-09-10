@@ -1,26 +1,58 @@
 import CountriesView from "@/components/CountriesView";
 import CountryCard from "@/components/CountryCard";
+import NavBar from "@/components/NavBar";
+import Search from "@/components/Search";
+import Image from "next/image";
+import Link from "next/link";
+
+import icon from "./icon1.svg";
+import { cache } from "react";
 
 type Country = {
   cca3: string,
-  name: string,
+  name: {
+    official: string,
+    common: string
+  },
   region: string,
-  flag: string
+  flags: {
+    svg: string
+  }
 }
 
+const getCountriesData = cache(async () => {
+  const res = await fetch("https://restcountries.com/v3.1/all?fields=name,region,flags,cca3");
+  return (await res.json()) as Country[];
+});
 
-export default async function Home() {
-  const res = await fetch("https://restcountries.com/v2/all?fields=name,region,flag,cca3");
-  const countries = (await res.json()) as Country[];
-  countries.sort((a, b) => (a.name > b.name) ? 1 : -1);
+export default async function Home({ searchParams }: { searchParams: { [key: string]: string } }) {
+  let countries = await getCountriesData();
+  countries.sort((a, b) => a.name.common.localeCompare(b.name.common))
+
+  if (searchParams.search) {
+    countries = countries.filter(country => {
+      const searchString = searchParams.search.toLowerCase();
+      const name = country.name.common.toLowerCase();
+      return name.includes(searchString);
+    });
+  }
 
   return (
-    <CountriesView>
-      {countries.map(country => <CountryCard
-        key={`${country.cca3}-${country.region}`}
-        name={country.name}
-        region={country.region}
-        flag={country.flag} />)}
-    </CountriesView>
+    <div>
+      <NavBar>
+        <Link className="flex gap-4 place-items-center" href={"/"}>
+          <Image src={icon} alt="Kountry Logo" width={36} height={36} />
+          <h1 className="text-2xl font-bold">Kountry</h1>
+        </Link>
+        <Search />
+      </NavBar>
+      <CountriesView className="mt-28 md:mt-16">
+        {countries.map(country => <CountryCard
+          key={`${country.cca3}-${country.region}`}
+          name={country.name.common}
+          region={country.region}
+          flag={country.flags.svg} />)}
+      </CountriesView>
+    </div>
   );
 }
