@@ -1,6 +1,6 @@
 import * as v from "valibot";
 
-export const CountrySchema = v.object({
+export const CountryInfoSchema = v.object({
     name: v.object({
         official: v.string(),
         common: v.string()
@@ -9,6 +9,7 @@ export const CountrySchema = v.object({
         svg: v.string(),
         alt: v.optional(v.string())
     }),
+    cca3: v.pipe(v.string(), v.length(3)),
     capital: v.optional(v.array(v.string()), []),
     tld: v.optional(v.array(v.string()), []),
     region: v.string(),
@@ -20,8 +21,12 @@ export const CountrySchema = v.object({
     timezones: v.array(v.string())
 });
 
-export type Country = v.InferInput<typeof CountrySchema>;
+export type CountryInfo = v.InferInput<typeof CountryInfoSchema>;
 
-export const CountryListSchema = v.array(CountrySchema);
+export const CountryInfoResponseSchema = v.pipe(v.array(CountryInfoSchema), v.length(1));
 
-export type CountryList = v.InferInput<typeof CountryListSchema>;
+export type CountryInfoReponse = v.InferInput<typeof CountryInfoResponseSchema>;
+
+export const CountryListResponseSchema = v.array(v.pick(CountryInfoSchema, ["name", "flags", "cca3", "region", "population"]));
+
+export type CountryListResponse = v.InferInput<typeof CountryListResponseSchema>;
