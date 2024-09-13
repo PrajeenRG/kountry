@@ -26,7 +26,11 @@ export default async function Home({ searchParams }: { searchParams: { [key: str
     url.searchParams.set("q", searchParams.q);
   }
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    headers: {
+      "x-vercel-protection-bypass": process.env.VERCEL_AUTOMATION_BYPASS_SECRET ?? ""
+    }
+  });
   const countries = (await res.json()) as Country[];
 
   return (

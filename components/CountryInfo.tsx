@@ -30,7 +30,11 @@ const Detail = ({ name, content }: { name: string, content: string }) => (<div c
 
 export default async function CountryInfo({ cca3 }: { cca3: string }) {
     const url = new URL(`/api/countries/${cca3}`, process.env.NEXT_PUBLIC_URL);
-    const res = await fetch(url);
+    const res = await fetch(url, {
+        headers: {
+            "x-vercel-protection-bypass": process.env.VERCEL_AUTOMATION_BYPASS_SECRET ?? ""
+        }
+    });
     const countryInfo = (await res.json()) as Country;
 
     return (
