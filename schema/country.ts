@@ -18,7 +18,8 @@ export const CountryInfoSchema = v.object({
     borders: v.optional(v.array(v.string()), []),
     population: v.number(),
     area: v.number(),
-    timezones: v.array(v.string())
+    timezones: v.array(v.string()),
+    startOfWeek: v.string()
 });
 
 export type CountryInfo = v.InferInput<typeof CountryInfoSchema>;

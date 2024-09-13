@@ -21,17 +21,13 @@ type Country = {
 }
 
 export default async function Home({ searchParams }: { searchParams: { [key: string]: string } }) {
-  const res = await fetch("https://restcountries.com/v3.1/all?fields=name,region,flags,cca3");
-  let countries = (await res.json()) as Country[];;
-  countries.sort((a, b) => a.name.common.localeCompare(b.name.common))
-
+  const url = new URL("/api/countries", process.env.NEXT_PUBLIC_URL);
   if (searchParams.q) {
-    countries = countries.filter(country => {
-      const searchString = searchParams.q.toLowerCase();
-      const name = country.name.common.toLowerCase();
-      return name.includes(searchString);
-    });
+    url.searchParams.set("q", searchParams.q);
   }
+
+  const res = await fetch(url);
+  const countries = (await res.json()) as Country[];
 
   return (
     <>

@@ -29,8 +29,9 @@ const Detail = ({ name, content }: { name: string, content: string }) => (<div c
 </div>);
 
 export default async function CountryInfo({ cca3 }: { cca3: string }) {
-    const res = await fetch(`https://restcountries.com/v3.1/alpha/${cca3}`);
-    const countryInfo = (await res.json())[0] as Country;
+    const url = new URL(`/api/countries/${cca3}`, process.env.NEXT_PUBLIC_URL);
+    const res = await fetch(url);
+    const countryInfo = (await res.json()) as Country;
 
     return (
         <div className={styles.container}>
