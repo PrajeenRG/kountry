@@ -1,24 +1,12 @@
 import CountriesView from "@/components/CountriesView";
 import CountryCard from "@/components/CountryCard";
 import CountryInfo from "@/components/CountryInfo";
-import NavBar from "@/components/NavBar";
 import Search from "@/components/Search";
 import Image from "next/image";
 import Link from "next/link";
 
 import icon from "./icon.svg";
-
-type Country = {
-  cca3: string,
-  name: {
-    official: string,
-    common: string
-  },
-  region: string,
-  flags: {
-    svg: string
-  }
-}
+import { CountryListResponse } from "@/schema/country";
 
 export default async function Home({ searchParams }: { searchParams: { [key: string]: string } }) {
   const url = new URL("/api/countries", process.env.NEXT_PUBLIC_URL);
@@ -31,18 +19,16 @@ export default async function Home({ searchParams }: { searchParams: { [key: str
       "x-vercel-protection-bypass": process.env.VERCEL_AUTOMATION_BYPASS_SECRET ?? ""
     }
   });
-  const countries = (await res.json()) as Country[];
+  const countries = (await res.json()) as CountryListResponse;
 
   return (
-    <>
-      <NavBar>
-        <Link className="flex gap-4 place-items-center" href={"/"}>
-          <Image src={icon} alt="Kountry Logo" width={36} height={36} />
-          <h1 className="text-2xl font-bold">Kountry</h1>
-        </Link>
-        <Search />
-      </NavBar>
-      <CountriesView className="mt-28 md:mt-16">
+    <div className="p-2 md:p-4 xl:p-8 space-y-4">
+      <Link className="flex gap-2 place-items-center" href={"/"}>
+        <Image src={icon} alt="Kountry Logo" width={56} height={56} />
+        <h1 className="text-3xl font-bold font-branding leading-none text-text">Kountry</h1>
+      </Link>
+      <Search />
+      <CountriesView>
         {countries.length === 0 ? "No results found" :
           countries.map(country => (
             < CountryCard
@@ -57,6 +43,6 @@ export default async function Home({ searchParams }: { searchParams: { [key: str
       <footer className="flex justify-center pb-6 text-opacity-70 text-gray-400">
         <p>Powered by <a className="underline" href="https://restcountries.com" target="_blank">restcountries.com</a></p>
       </footer>
-    </>
+    </div>
   );
 }

@@ -29,7 +29,7 @@ export default function Search() {
     const handleSearch = (text: string) => {
         const params = new URLSearchParams(searchParams);
         if (text) {
-            params.set("q", text);
+            params.set("q", text.toLocaleLowerCase());
         } else {
             params.delete("q");
         }
@@ -37,7 +37,7 @@ export default function Search() {
         replace(`${pathname}?${params.toString()}`);
     }
 
-    const debouncedHandler = debounce(handleSearch, 250);
+    const debouncedHandler = debounce(handleSearch, 100);
 
     return <input className={styles.searchBox} type="text"
         placeholder="Search"

@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "selector",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,12 +19,15 @@ const config: Config = {
     },
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'text': 'hsl(var(--text))',
+        'background': 'hsl(var(--background))',
+        'primary': 'hsl(var(--primary))',
+        'secondary': 'hsl(var(--secondary))',
+        'accent': 'hsl(var(--accent))',
       },
       fontFamily: {
-        sans: ["var(--font-overpass)"],
-        branding: ["var(--font-georama)"]
+        sans: ["var(--font-overpass)", "sans-serif"],
+        branding: ["var(--font-georama)", "sans-serif"]
       }
     },
   },

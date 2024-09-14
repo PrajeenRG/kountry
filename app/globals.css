@@ -2,17 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  @apply bg-slate-200 dark:bg-slate-900;
-  @apply text-black dark:text-white;
-}
+@layer base {
+  :root {
+    --text: 263 31% 5%;
+    --background: 270 43% 97%;
+    --primary: 265 65% 54%;
+    --secondary: 265 82% 74%;
+    --accent: 265 100% 60%;
+  }
 
-*::-webkit-scrollbar {
-  display: none;
+  .dark {
+    --text: 262 31% 95%;
+    --background: 274 47% 3%;
+    --primary: 265 65% 46%;
+    --secondary: 265 82% 26%;
+    --accent: 265 100% 40%;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }

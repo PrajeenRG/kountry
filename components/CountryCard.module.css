@@ -1,5 +1,5 @@
 .card {
-    @apply m-0.5;
+    @apply m-2;
     @apply p-2;
     @apply bg-slate-50 dark:bg-slate-700;
     @apply shadow-sm;
@@ -10,14 +10,15 @@
 
 .card:hover {
     @apply m-0;
-    @apply p-2.5;
+    @apply p-3;
     @apply shadow-lg;
-    @apply transition-transform;
+    @apply transition-all duration-150 ease-in-out;
+    @apply cursor-pointer;
 }
 
 .flag {
     @apply bg-slate-100 dark:bg-slate-800;
-    @apply rounded-sm;
+    @apply rounded;
     width: 100%;
     aspect-ratio: 7/5;
     overflow: hidden;
