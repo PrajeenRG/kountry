@@ -16,32 +16,39 @@ export default async function Home({ searchParams }: { searchParams: { [key: str
 
   const res = await fetch(url, {
     headers: {
-      "x-vercel-protection-bypass": process.env.VERCEL_AUTOMATION_BYPASS_SECRET ?? ""
-    }
+      "x-vercel-protection-bypass": process.env.VERCEL_AUTOMATION_BYPASS_SECRET ?? "",
+    },
   });
   const countries = (await res.json()) as CountryListResponse;
 
   return (
-    <div className="p-2 md:p-4 xl:p-8 space-y-4">
-      <Link className="flex gap-2 place-items-center" href={"/"}>
+    <div className="space-y-4 p-2 md:p-4 xl:p-8">
+      <Link className="flex place-items-center gap-2" href={"/"}>
         <Image src={icon} alt="Kountry Logo" width={56} height={56} />
-        <h1 className="text-3xl font-bold font-branding leading-none text-text">Kountry</h1>
+        <h1 className="font-branding text-3xl font-bold leading-none text-text">Kountry</h1>
       </Link>
       <Search />
       <CountriesView>
-        {countries.length === 0 ? "No results found" :
-          countries.map(country => (
-            < CountryCard
-              key={country.cca3}
-              name={country.name.common}
-              region={country.region}
-              flag={country.flags.svg}>
-              <CountryInfo cca3={country.cca3} />
-            </CountryCard>)
-          )}
+        {countries.length === 0
+          ? "No results found"
+          : countries.map((country) => (
+              <CountryCard
+                key={country.cca3}
+                name={country.name.common}
+                region={country.region}
+                flag={country.flags.svg}
+              >
+                <CountryInfo cca3={country.cca3} />
+              </CountryCard>
+            ))}
       </CountriesView>
-      <footer className="flex justify-center pb-6 text-opacity-70 text-gray-400">
-        <p>Powered by <a className="underline" href="https://restcountries.com" target="_blank">restcountries.com</a></p>
+      <footer className="flex justify-center pb-6 text-gray-400 text-opacity-70">
+        <p>
+          Powered by{" "}
+          <a className="underline" href="https://restcountries.com" target="_blank">
+            restcountries.com
+          </a>
+        </p>
       </footer>
     </div>
   );

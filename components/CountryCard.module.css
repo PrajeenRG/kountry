@@ -1,52 +1,52 @@
 .card {
-    @apply m-2;
-    @apply p-2;
-    @apply bg-slate-50 dark:bg-slate-700;
-    @apply shadow-sm;
-    @apply transition-all;
-    @apply shadow-slate-400 dark:shadow-slate-900;
-    @apply rounded-md;
+  @apply m-2;
+  @apply p-2;
+  @apply bg-slate-50 dark:bg-slate-700;
+  @apply shadow-sm;
+  @apply transition-all;
+  @apply shadow-slate-400 dark:shadow-slate-900;
+  @apply rounded-md;
 }
 
 .card:hover {
-    @apply m-0;
-    @apply p-3;
-    @apply shadow-lg;
-    @apply transition-all duration-150 ease-in-out;
-    @apply cursor-pointer;
+  @apply m-0;
+  @apply p-3;
+  @apply shadow-lg;
+  @apply transition-all duration-150 ease-in-out;
+  @apply cursor-pointer;
 }
 
 .flag {
-    @apply bg-slate-100 dark:bg-slate-800;
-    @apply rounded;
-    width: 100%;
-    aspect-ratio: 7/5;
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
+  @apply bg-slate-100 dark:bg-slate-800;
+  @apply rounded;
+  width: 100%;
+  aspect-ratio: 7/5;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
 }
 
 .title {
-    @apply font-bold;
-    @apply text-xl;
-    @apply mt-1;
-    @apply truncate;
+  @apply font-bold;
+  @apply text-xl;
+  @apply mt-1;
+  @apply truncate;
 }
 
 .subtext {
-    @apply mt-0.5;
-    @apply truncate;
+  @apply mt-0.5;
+  @apply truncate;
 }
 
 .closeBtn {
-    position: absolute;
-    display: grid;
-    place-items: center;
-    aspect-ratio: 1;
-    @apply top-4 md:top-[calc(6%_+_1rem)];
-    @apply right-4 md:right-[calc(6%_+_1rem)];
-    @apply p-2;
-    @apply w-10 md:w-8;
-    @apply bg-gray-400 dark:bg-gray-900;
-    @apply rounded-full;
+  position: absolute;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  @apply top-4 md:top-[calc(6%_+_1rem)];
+  @apply right-4 md:right-[calc(6%_+_1rem)];
+  @apply p-2;
+  @apply w-10 md:w-8;
+  @apply bg-gray-400 dark:bg-gray-900;
+  @apply rounded-full;
 }

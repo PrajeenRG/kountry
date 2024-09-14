@@ -19,17 +19,20 @@ A UI wrapper for API provided by [restcountries.com](https://restcountries.com).
 ## Get Started
 
 Install the dependencies:
+
 ```bash
 cd kountry
 pnpm install # preferred, but can use others like npm and yarn
 ```
 
 To run in developer mode:
+
 ```bash
 pnpm run dev
 ```
 
 To start a production like local server:
+
 ```bash
 pnpm run build && pnpm run start
 ```

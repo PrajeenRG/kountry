@@ -1,21 +1,21 @@
 .overlay {
-    display: grid;
-    place-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    @apply bg-slate-200 dark:bg-slate-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-md;
-    @apply backdrop-blur;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  @apply bg-slate-200 bg-opacity-80 backdrop-blur-md dark:bg-slate-900 dark:bg-opacity-80;
+  @apply backdrop-blur;
 }
 
 .container {
-    @apply w-full md:w-[calc(100vw_-_12%)];
-    @apply h-full md:h-[calc(100vh_-_12%)];
-    @apply px-10 py-5;
-    @apply rounded-none md:rounded-2xl;
-    @apply bg-slate-50 dark:bg-slate-800;
-    @apply shadow-none md:shadow-md;
-    overflow-y: scroll;
+  @apply w-full md:w-[calc(100vw_-_12%)];
+  @apply h-full md:h-[calc(100vh_-_12%)];
+  @apply px-10 py-5;
+  @apply rounded-none md:rounded-2xl;
+  @apply bg-slate-50 dark:bg-slate-800;
+  @apply shadow-none md:shadow-md;
+  overflow-y: scroll;
 }

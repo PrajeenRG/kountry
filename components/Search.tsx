@@ -7,39 +7,47 @@ import styles from "./Search.module.css";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type DebounceFunction = (...args: any[]) => void;
 
-function debounce<T extends DebounceFunction>(func: T, wait: number): (...args: Parameters<T>) => void {
-    let timeout: NodeJS.Timeout | null = null;
+function debounce<T extends DebounceFunction>(
+  func: T,
+  wait: number,
+): (...args: Parameters<T>) => void {
+  let timeout: NodeJS.Timeout | null = null;
 
-    return function (...args: Parameters<T>): void {
-        if (timeout !== null) {
-            clearTimeout(timeout);
-        }
+  return function (...args: Parameters<T>): void {
+    if (timeout !== null) {
+      clearTimeout(timeout);
+    }
 
-        timeout = setTimeout(() => {
-            func(...args);
-        }, wait);
-    };
+    timeout = setTimeout(() => {
+      func(...args);
+    }, wait);
+  };
 }
 
 export default function Search() {
-    const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const { replace } = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
-    const handleSearch = (text: string) => {
-        const params = new URLSearchParams(searchParams);
-        if (text) {
-            params.set("q", text.toLocaleLowerCase());
-        } else {
-            params.delete("q");
-        }
-
-        replace(`${pathname}?${params.toString()}`);
+  const handleSearch = (text: string) => {
+    const params = new URLSearchParams(searchParams);
+    if (text) {
+      params.set("q", text.toLocaleLowerCase());
+    } else {
+      params.delete("q");
     }
 
-    const debouncedHandler = debounce(handleSearch, 100);
+    replace(`${pathname}?${params.toString()}`);
+  };
 
-    return <input className={styles.searchBox} type="text"
-        placeholder="Search"
-        onChange={e => debouncedHandler(e.target.value)} />
+  const debouncedHandler = debounce(handleSearch, 100);
+
+  return (
+    <input
+      className={styles.searchBox}
+      type="text"
+      placeholder="Search"
+      onChange={(e) => debouncedHandler(e.target.value)}
+    />
+  );
 }

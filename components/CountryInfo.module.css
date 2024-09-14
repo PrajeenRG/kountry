@@ -1,56 +1,56 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    place-items: center;
-    place-content: center;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  place-items: center;
+  place-content: center;
+  gap: 1rem;
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  justify-content: space-evenly;
 }
 
 .title {
-    @apply text-2xl md:text-3xl;
-    @apply font-bold;
-    @apply text-gray-800 dark:text-gray-200;
+  @apply text-2xl md:text-3xl;
+  @apply font-bold;
+  @apply text-gray-800 dark:text-gray-200;
 }
 
 .altTitle {
-    @apply text-xl md:text-2xl;
-    @apply font-medium;
-    @apply text-gray-600 dark:text-gray-400;
+  @apply text-xl md:text-2xl;
+  @apply font-medium;
+  @apply text-gray-600 dark:text-gray-400;
 }
 
 .flag {
-    width: 80%;
-    max-height: 12rem;
-    padding: 1rem;
-    overflow: hidden;
-    object-fit: contain;
-    object-position: center;
+  width: 80%;
+  max-height: 12rem;
+  padding: 1rem;
+  overflow: hidden;
+  object-fit: contain;
+  object-position: center;
 }
 
 .detailBox {
-    @apply grid;
-    @apply grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5;
-    gap: 2rem;
-    justify-content: center;
-    min-width: 70%;
-    max-width: 90%;
+  @apply grid;
+  @apply grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5;
+  gap: 2rem;
+  justify-content: center;
+  min-width: 70%;
+  max-width: 90%;
 }
 
 .detail {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.detail>strong {
-    @apply font-medium;
-    text-transform: uppercase;
+.detail > strong {
+  @apply font-medium;
+  text-transform: uppercase;
 }

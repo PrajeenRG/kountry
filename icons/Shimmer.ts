@@ -1,4 +1,4 @@
-type ShimmerProps = { w: number, h: number };
+type ShimmerProps = { w: number; h: number };
 
 const shimmer = ({ w, h }: ShimmerProps) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -15,5 +15,5 @@ const shimmer = ({ w, h }: ShimmerProps) => `
 </svg>`;
 
 export default function Shimmer(props: ShimmerProps) {
-    return Buffer.from(shimmer(props)).toString("base64");
+  return Buffer.from(shimmer(props)).toString("base64");
 }
