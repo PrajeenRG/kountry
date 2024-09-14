@@ -22,7 +22,8 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        sans: ['var(--font-poppins)']
+        sans: ["var(--font-overpass)"],
+        branding: ["var(--font-georama)"]
       }
     },
   },

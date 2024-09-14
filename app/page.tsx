@@ -6,7 +6,7 @@ import Search from "@/components/Search";
 import Image from "next/image";
 import Link from "next/link";
 
-import icon from "./icon1.svg";
+import icon from "./icon.svg";
 
 type Country = {
   cca3: string,

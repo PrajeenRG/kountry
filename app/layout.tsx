@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Georama, Overpass } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 
-const poppins = Poppins({
-  weight: ["400", "500", "700"],
+const georama = Georama({
   subsets: ["latin"],
-  display: "swap",
-  variable: "--font-poppins"
+  variable: "--font-georama"
+});
+
+const overpass = Overpass({
+  subsets: ["latin"],
+  variable: "--font-overpass"
 })
 
 export const metadata: Metadata = {
@@ -24,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} antialiased`}
+        className={`${georama.className} ${overpass.className} antialiased`}
       >
         {children}
         <Analytics />
